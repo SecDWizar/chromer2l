@@ -1,0 +1,42 @@
+{
+    "name": "r2l",
+    "version": "0.26",
+    "description": "r2l Extension!",
+    "manifest_version": 2,
+    "commands": {
+        "r2l": {
+          "suggested_key": {
+            "default": "Ctrl+Shift+Y",
+            "mac": "Command+Shift+Y"
+          },
+          "description": "clipboard r2l of highlighted text"
+        }
+    },
+    "background": {
+        "scripts": ["js/background.js"],
+        "persistent": false
+    },
+    "permissions": [
+        "clipboardWrite",
+        "clipboardRead"
+    ],
+    "content_scripts": [
+        {
+            "js": [
+               "js/content.js"
+            ],
+            "run_at": "document_end",
+            "matches": [
+                "https://www.figma.com/file/*",
+                "http://www.figma.com/file/*",
+                "https://www.figma.com/files/*",
+                "http://www.figma.com/files/*"
+            ],
+            "all_frames": true
+        }
+    ],
+    "content_security_policy": "script-src 'self'; object-src 'self'",
+    "web_accessible_resources": [
+        "js/content.js"
+    ]
+}
