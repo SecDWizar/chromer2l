@@ -1,8 +1,12 @@
 {
     "name": "r2l",
-    "version": "0.34",
+    "version": "0.35",
     "description": "Hebrew r2l extension for figma using c&p interface (like הפוך על הפוך)",
     "manifest_version": 2,
+    "icons": { 
+        "16": "icons/rt-figma-icon-16.png",
+        "48": "icons/rt-figma-icon-48.png",
+       "128": "icons/rt-figma-icon-128.png" },
     "commands": {
         "r2l": {
           "suggested_key": {
