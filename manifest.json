@@ -1,6 +1,6 @@
 {
     "name": "r2l",
-    "version": "0.27",
+    "version": "0.34",
     "description": "Hebrew r2l extension for figma using c&p interface (like הפוך על הפוך)",
     "manifest_version": 2,
     "commands": {
@@ -13,7 +13,7 @@
         }
     },
     "background": {
-        "scripts": ["js/background.js"],
+        "scripts": ["js/background.js", "inc/require.js"],
         "persistent": false
     },
     "permissions": [
