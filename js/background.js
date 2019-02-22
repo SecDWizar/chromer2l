@@ -24,22 +24,25 @@ function setContentToClipboard(text) {
     document.body.removeChild(t);
 }
 
+function reverseHebrewText (text) {
+    return text.split("").reverse().join("");
+}
+
 chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
     if (msg.action == "reverse") {
         //console.log ('onMessage reverse');
         var clipboardText = getContentFromClipboard();
         
-        reversedText = clipboardText.split("").reverse().join("");
+        reversedText = reverseHebrewText(clipboardText)
         setContentToClipboard(reversedText);
-        
         sendResponse();
     }
 });
     
 chrome.commands.onCommand.addListener(function(command) {
     if (command === 'r2l') {
-        chrome.tabs.query({active: true, currentWindow: true}, function(tabs){
-            chrome.tabs.sendMessage(tabs[0].id, {action: "toggleReverse"});  
+        chrome.tabs.executeScript({
+            code: 'document.execCommand("copy"); chrome.runtime.sendMessage({"action": "reverse"}, function() { document.execCommand("paste"); });'
         });
     }
 });

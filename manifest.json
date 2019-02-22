@@ -1,7 +1,7 @@
 {
     "name": "r2l",
-    "version": "0.26",
-    "description": "r2l Extension!",
+    "version": "0.27",
+    "description": "Hebrew r2l extension for figma using c&p interface (like הפוך על הפוך)",
     "manifest_version": 2,
     "commands": {
         "r2l": {
@@ -18,22 +18,8 @@
     },
     "permissions": [
         "clipboardWrite",
-        "clipboardRead"
-    ],
-    "content_scripts": [
-        {
-            "js": [
-               "js/content.js"
-            ],
-            "run_at": "document_end",
-            "matches": [
-                "https://www.figma.com/file/*",
-                "http://www.figma.com/file/*",
-                "https://www.figma.com/files/*",
-                "http://www.figma.com/files/*"
-            ],
-            "all_frames": true
-        }
+        "clipboardRead",
+        "activeTab"
     ],
     "content_security_policy": "script-src 'self'; object-src 'self'",
     "web_accessible_resources": [
